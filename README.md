@@ -1,5 +1,5 @@
 # pyenvcomp  
-## The python environment comparator tool :snake:
+## The python virtual environment comparator tool :snake:
 
 ## **Installation**
 
@@ -12,9 +12,9 @@ pip install pyenvcomp
 ```
 ➜  compare  Path1 Path2  --display <value>
 ```
-**Path1** -  path to one environment.
+**Path1** -  path to one virtual environment.
 
-**Path2** -  path to another environment. 
+**Path2** -  path to another virtual environment. 
 
 **List of diplay types available:**
 
