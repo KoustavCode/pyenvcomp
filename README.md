@@ -1,6 +1,5 @@
 # pyenvcomp  
 ## The python environment comparator tool :snake:
-:man_technologist:
 
 ## **Installation**
 
@@ -26,7 +25,8 @@ pip install pyenvcomp
 *default* - similar to     ```all```  value of  ```display```  argument.
 
 
-## **Example**
+## **Example** :man_technologist:
+
 
 ### **Input**
 
