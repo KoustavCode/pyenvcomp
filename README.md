@@ -20,11 +20,22 @@ compare path1 path2 [--display [all|diff|separate]]
 
 **List of display types available:**
 
-1. `all` - displays all the differences, similarities and extra modules in each virtual environments.
+1. `all` - displays all the differences, similarities and extra modules in each virtual environments. This is the default display option.
 2. `diff` - displays just the list of modules which are present in both the virtual environments but have different versions.
 3. `separate` - displays two different tables of extra modules in each virtual environments.
 
-_default_ - similar to `all` value of `display` argument.
+```bash
+usage: compare [-h] [-d DISPLAY] env path1 env path2
+
+positional arguments:
+  env path1             location of the first virtual environment
+  env path2             location of the second virtual environment
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DISPLAY, --display DISPLAY
+                        Compare envs based on either of these available options [all|diff|separate]
+```
 
 ## :man_technologist: Example
 
