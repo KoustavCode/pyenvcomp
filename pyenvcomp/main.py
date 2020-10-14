@@ -99,8 +99,8 @@ def main():
 
     cols = [
         'Module',
-        f"env_1_name({python_version_env_1})",
-        f"env_2_name({python_version_env_2})",
+        f"{env_1_name}({python_version_env_1})",
+        f"{env_2_name}({python_version_env_2})",
     ]
     similar_list = []
     non_similar_list = []
@@ -141,9 +141,9 @@ def main():
 
     try:
         if display in ['all', None]:
-            print(" SAME MODULES ")
+            print(" SAME MODULE VERSIONS ")
             print(tf.generate_table(similar_list, cols))
-            print(" DIFFERENT MODULES ")
+            print(" DIFFERENT MODULE VERSIONS ")
             print(tf.generate_table(non_similar_list, cols))
             print(
                 'ONLY IN '
@@ -153,7 +153,7 @@ def main():
                 + Colors.END
             )
 
-            col_1 = [f"env_1_name({python_version_env_1})", "version"]
+            col_1 = [f"{env_1_name}({python_version_env_1})", "version"]
             print(tf.generate_table(only_env_1_list, col_1))
 
             print(
@@ -164,14 +164,14 @@ def main():
                 + Colors.END
             )
 
-            col_2 = [f"env_2_name({python_version_env_2})", "version"]
+            col_2 = [f"{env_2_name}({python_version_env_2})", "version"]
             print(tf.generate_table(only_env_2_list, col_2))
 
         elif display == 'diff':
-            print(" DIFFERENT MODULES ")
+            print(" DIFFERENT MODULE VERSIONS ")
             print(tf.generate_table(non_similar_list, cols))
         elif display == 'similar':
-            print(" SAME MODULES ")
+            print(" SAME MODULE VERSIONS ")
             print(tf.generate_table(similar_list, cols))
         elif display == 'separate':
             print(
@@ -182,7 +182,7 @@ def main():
                 + Colors.END
             )
 
-            col_1 = [f"env_1_name({python_version_env_1})", "version"]
+            col_1 = [f"{env_1_name}({python_version_env_1})", "version"]
             print(tf.generate_table(only_env_1_list, col_1))
 
             print(
@@ -193,7 +193,7 @@ def main():
                 + Colors.END
             )
 
-            col_2 = [f"env_2_name({python_version_env_2})", "version"]
+            col_2 = [f"{env_2_name}({python_version_env_2})", "version"]
             print(tf.generate_table(only_env_2_list, col_2))
 
     except Exception as exception:
