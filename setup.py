@@ -12,10 +12,10 @@ README = (HERE / "README.md").read_text()
 setup(
     name="pyenvcomp",
     version=__version__,
-    description="Detailed display of the difference between two  given python virtual environments.",
+    description="Detailed display of the difference between two given python virtual environments.",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="",
+    url="https://github.com/KoustavCode/pyenvcomp.git",
     author="Koustav Chanda",
     author_email="koustavtocode@gmail.com",
     license="MIT",

@@ -26,3 +26,8 @@ pip install pyenvcomp
 
 ## **Future versions**
 
+In the upcoming versions following features will be added:
+
+1. Compare directly from ```Requirements.txt``` file
+2. Warning messages will be provided if any depricated version of any module is being used.
+
