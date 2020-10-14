@@ -12,7 +12,7 @@ README = (HERE / "README.md").read_text()
 setup(
     name="pyenvcomp",
     version=__version__,
-    description="Displays the difference between two python virtual environments.",
+    description="Detailed display of the difference between two  given python virtual environments.",
     long_description=README,
     long_description_content_type="text/markdown",
     url="",
@@ -29,7 +29,7 @@ setup(
     install_requires=[],
     entry_points={
         "console_scripts": [
-            "compare=pyenvcomp.main",
+            "compare=pyenvcomp.main:main",
         ]
     },
 )
