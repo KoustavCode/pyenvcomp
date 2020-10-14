@@ -1,44 +1,56 @@
-# pyenvcomp  
-## The python virtual environment comparator tool :snake:
+# :snake: pyenvcomp
 
-## **Installation**
+The python virtual environment comparator tool. Compare two python virtualenvs and find out the differences.
 
-```
+## Installation
+
+```bash
 pip install pyenvcomp
 ```
 
-## **Usage**
+## Usage
 
+```bash
+compare path1 path2 [--display [all|diff|separate]]
 ```
-➜  compare  Path1 Path2  --display <value>
+
+**path1** - path to one virtual environment.
+
+**path2** - path to another virtual environment.
+
+**List of display types available:**
+
+1. `all` - displays all the differences, similarities and extra modules in each virtual environments. This is the default display option.
+2. `diff` - displays just the list of modules which are present in both the virtual environments but have different versions.
+3. `separate` - displays two different tables of extra modules in each virtual environments.
+
+```bash
+usage: compare [-h] [-d DISPLAY] env path1 env path2
+
+positional arguments:
+  env path1             location of the first virtual environment
+  env path2             location of the second virtual environment
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -d DISPLAY, --display DISPLAY
+                        Compare envs based on either of these available options [all|diff|separate]
 ```
-**Path1** -  path to one virtual environment.
 
-**Path2** -  path to another virtual environment. 
+## :man_technologist: Example
 
-**List of diplay types available:**
+Input:
 
-1. ```all``` - displays all the difference, similarity and extra modules in each virual environments.
-2. ```diff``` - displays just the list of modules which are present in both the virtual environments but differs in version.
-3. ```separate``` - displays two different tables of extra modules in each virual environments.
-
-*default* - similar to     ```all```  value of  ```display```  argument.
-
-
-## **Example** :man_technologist:
-
-
-### **Input**
-
+```bash
+compare /home/koustav/Documents/test_env_1 /home/koustav/Documents/test_env_2 --display all
 ```
-$ compare /home/koustav/Documents/test_env_1 /home/koustav/Documents/test_env_2 --display all
-```
-where, `test_env_1` and `test_env_2` are my two python virtual environments .
 
-### **Output**
+where, `test_env_1` and `test_env_2` are two python virtual environments.
 
-```
-SIMILAR MODULES 
+Output:
+
+```bash
+SAME MODULE VERSIONS
 ╔═════════════════╤═══════════════════════╤═══════════════════════╗
 ║ Module          │ test_env_1(python3.8) │ test_env_2(python3.8) ║
 ╠═════════════════╪═══════════════════════╪═══════════════════════╣
@@ -73,7 +85,7 @@ SIMILAR MODULES
 ║ wheel           │ 0.34.2                │ 0.34.2                ║
 ╚═════════════════╧═══════════════════════╧═══════════════════════╝
 
- DIFFERENT MODULES 
+DIFFERENT MODULE VERSIONS
 ╔════════╤═══════════════════════╤═══════════════════════╗
 ║ Module │ test_env_1(python3.8) │ test_env_2(python3.8) ║
 ╠════════╪═══════════════════════╪═══════════════════════╣
@@ -81,7 +93,7 @@ SIMILAR MODULES
 ║ pandas │ 1.1.2                 │ 1.1.3                 ║
 ╚════════╧═══════════════════════╧═══════════════════════╝
 
-ONLY IN test_env_1(python3.8)
+ONLY IN test_env_1 (python3.8)
 ╔═══════════════════════╤═════════╗
 ║ test_env_1(python3.8) │ version ║
 ╠═══════════════════════╪═════════╣
@@ -97,7 +109,7 @@ ONLY IN test_env_1(python3.8)
 ║ mccabe                │ 0.6.1   ║
 ╚═══════════════════════╧═════════╝
 
-ONLY IN test_env_2(python3.8)
+ONLY IN test_env_2 (python3.8)
 ╔═══════════════════════╤═════════╗
 ║ test_env_2(python3.8) │ version ║
 ╠═══════════════════════╪═════════╣
@@ -110,13 +122,14 @@ ONLY IN test_env_2(python3.8)
 ║ Jinja2                │ 2.11.2  ║
 ╚═══════════════════════╧═════════╝
 ```
-Visuals in actual terminal would look a bit different than the above output visual.
 
-## **Future versions**
+Visuals in the terminal would look slightly different than the above output visual.
+
+## Future versions
 
 In the upcoming versions following features will be added:
 
-1. Compare directly from ```Requirements.txt``` file
-2. Warning messages will be provided if any depricated version of any module is being used.
+- [ ] Compare directly from `requirements.txt` file
+- [ ] Warning messages will be provided if any deprecated version of any module is being used.
 
-Inspired by problems faced while doing r&d at my workplace :nerd_face:
+Inspired by problems faced while doing R&D at my workplace! :nerd_face:

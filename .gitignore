@@ -107,4 +107,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+venv/
+env/
+.venv/
+.env/
+
+.vscode/
+
 # End of https://www.gitignore.io/api/python
