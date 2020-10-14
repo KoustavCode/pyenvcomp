@@ -1,5 +1,6 @@
 # pyenvcomp  
-## The python environment comparator tool
+## The python environment comparator tool :snake:
+:man_technologist:
 
 ## **Installation**
 
