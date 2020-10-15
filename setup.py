@@ -23,7 +23,7 @@ setup(
     ],
     packages=["pyenvcomp"],
     include_package_data=True,
-    install_requires=['tableformatter'],
+    install_requires=['tableformatter','colored','colorama'],
     entry_points={
         "console_scripts": [
             "compare=pyenvcomp.main:main",
