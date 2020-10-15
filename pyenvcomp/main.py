@@ -2,6 +2,7 @@
 """
 
 import os
+import sys
 import argparse
 import subprocess
 import tableformatter as tf
@@ -76,19 +77,40 @@ def main():
     env1_name = env1_path[env1_path.rfind("/") + 1 :]
     env2_name = env2_path[env2_path.rfind("/") + 1 :]
 
-    env1_py_version = os.listdir(env1_path + os.sep + "/lib")[0]
-    env1_modules = subprocess.check_output(
-        f"ls -d {str(env1_path)}/lib/{env1_py_version}/site-packages/*.dist-info | xargs -I% basename % | sed 's/\.dist-info//;' ",
-        shell=True,
-    )
-    env2_py_version = os.listdir(env2_path + os.sep + "/lib")[0]
-    env2_modules = subprocess.check_output(
-        f"ls -d {str(env2_path)}/lib/{env2_py_version}/site-packages/*.dist-info | xargs -I% basename % | sed 's/\.dist-info//;'",
-        shell=True,
-    )
+    if sys.platform == 'linux':
+        
+        env1_py_version = os.listdir(env1_path + os.sep + "/lib")[0]
+        env1_modules = subprocess.check_output(
+            f"ls -d {str(env1_path)}/lib/{env1_py_version}/site-packages/*.dist-info | xargs -I% basename % | sed 's/\.dist-info//;' ",
+            shell=True,
+        )
+        env2_py_version = os.listdir(env2_path + os.sep + "/lib")[0]
+        env2_modules = subprocess.check_output(
+            f"ls -d {str(env2_path)}/lib/{env2_py_version}/site-packages/*.dist-info | xargs -I% basename % | sed 's/\.dist-info//;'",
+            shell=True,
+        )
 
-    output_split1 = env1_modules.decode("utf-8").split("\n")
-    output_split2 = env2_modules.decode("utf-8").split("\n")
+        output_split1 = env1_modules.decode("utf-8").split("\n")
+        output_split2 = env2_modules.decode("utf-8").split("\n")
+
+    else:
+
+        env1_py_version = "python-3.8"
+        env1_modules = os.listdir(env1_path + os.sep + "Lib" + os.sep + "site-packages")
+        # subprocess.check_output(
+        #     f"ls -d {str(env1_path)}/lib/{env1_py_version}/site-packages/*.dist-info | xargs -I% basename % | sed 's/\.dist-info//;' ",
+        #     shell=True,
+        # )
+        env2_py_version = "python-3.8"
+        env2_modules = os.listdir(env1_path + os.sep + "Lib" + os.sep + "site-packages")
+        # subprocess.check_output(
+        #     f"ls -d {str(env2_path)}/lib/{env2_py_version}/site-packages/*.dist-info | xargs -I% basename % | sed 's/\.dist-info//;'",
+        #     shell=True,
+        # )
+
+        output_split1 = [module[:module.rfind(".")] for module in env1_modules if "dist-info" in module] #env1_modules.decode("utf-8").split("\n")
+        output_split2 = [module[:module.rfind(".")] for module in env2_modules if "dist-info" in module] #env2_modules.decode("utf-8").split("\n")
+
 
     env1_map = {}
     env2_map = {}
