@@ -23,6 +23,16 @@ class Colors:
     END = "\033[0m"
 
 
+# remove all colors if the platform is not linux
+if sys.platform != 'linux':
+    colors = [
+        var 
+        for var, _ in Colors.__dict__.items() 
+        if not var.startswith("__")
+    ]
+    for var in colors:
+        setattr(Colors, var, '')
+
 class ArgParse:
     """
     Argument parsing class
@@ -93,7 +103,7 @@ def env_map(modules: List[str]) -> dict:
         try:
             mod, version, *_ = module.split("-")
             mod_to_ver[mod] = version
-        except:
+        except Exception:
             pass
     return mod_to_ver
 
@@ -120,14 +130,20 @@ def get_python_version(path):
     if sys.platform == 'linux':
         return os.listdir(path + os.sep + "/lib")[0]
     else:
-        return "python-3.8"
+        py_ver_config_path = path + os.sep + 'pyvenv.cfg'
+        with open(py_ver_config_path) as f:
+            version = None
+            for line in f:
+                if line.lower().startswith('version'):
+                    version = line.split('=')[-1].strip()
+                    break
+        return version
 
 
 def main():
     """
     The main comparing function
     """
-
     arg_parse = ArgParse()
     arg_parse.parse_args()
     args = vars(arg_parse)

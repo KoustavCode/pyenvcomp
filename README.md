@@ -11,7 +11,7 @@ pip install pyenvcomp
 ## Usage
 
 ```bash
-compare path1 path2 [--display [all|diff|separate]]
+compare path1 path2 --display [all|diff|separate]
 ```
 
 **path1** - path to one virtual environment.
